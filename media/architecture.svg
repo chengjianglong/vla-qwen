@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 980 630" width="980" height="630" font-family="Helvetica, Arial, sans-serif">
+<rect width="980" height="630" rx="14" fill="#fcfcfb"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a8984"/></marker></defs>
+<image x="40" y="36" width="112" height="112" xlink:href="data:image/jpeg;base64,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"/>
+<rect x="40" y="36" width="112" height="112" fill="none" stroke="#e4e3df"/>
+<text x="96" y="166" text-anchor="middle" font-size="11.5" font-weight="400" fill="#52514e">scene camera</text>
+<image x="168" y="36" width="112" height="112" xlink:href="data:image/jpeg;base64,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"/>
+<rect x="168" y="36" width="112" height="112" fill="none" stroke="#e4e3df"/>
+<text x="224" y="166" text-anchor="middle" font-size="11.5" font-weight="400" fill="#52514e">wrist camera</text>
+<rect x="330" y="62" width="300" height="60" rx="10" fill="#f0efec" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="480.0" y="90.0" text-anchor="middle" font-size="13" font-weight="600" fill="#0b0b0b">"put the bowl on the plate"</text>
+<text x="480.0" y="107.0" text-anchor="middle" font-size="11.5" fill="#52514e">language instruction</text>
+<rect x="660" y="62" width="130" height="60" rx="10" fill="#fdf0ea" stroke="#eb6834" stroke-width="1.5"/>
+<text x="725.0" y="90.0" text-anchor="middle" font-size="13" font-weight="600" fill="#0b0b0b">robot state</text>
+<text x="725.0" y="107.0" text-anchor="middle" font-size="11.5" fill="#52514e">8-D (eef pose, gripper)</text>
+<rect x="820" y="62" width="130" height="60" rx="10" fill="#e8f7f1" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="885.0" y="90.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0b0b0b">8 action queries</text>
+<text x="885.0" y="107.0" text-anchor="middle" font-size="11.5" fill="#52514e">learned embeddings</text>
+<text x="40" y="22" text-anchor="start" font-size="11" font-weight="700" fill="#8a8984">INPUTS</text>
+<rect x="40" y="196" width="240" height="50" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="160.0" y="219.0" text-anchor="middle" font-size="13" font-weight="600" fill="#0b0b0b">Qwen3-VL vision encoder</text>
+<text x="160.0" y="236.0" text-anchor="middle" font-size="11.5" fill="#52514e">frozen · 2×49 visual tokens</text>
+<rect x="330" y="196" width="300" height="50" rx="10" fill="#f0efec" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="480.0" y="219.0" text-anchor="middle" font-size="13" font-weight="600" fill="#0b0b0b">tokenizer + embedding</text>
+<text x="480.0" y="236.0" text-anchor="middle" font-size="11.5" fill="#52514e">frozen (kept on CPU)</text>
+<rect x="660" y="196" width="130" height="50" rx="10" fill="#fdf0ea" stroke="#eb6834" stroke-width="1.5"/>
+<text x="725.0" y="219.0" text-anchor="middle" font-size="13" font-weight="600" fill="#0b0b0b">state MLP</text>
+<text x="725.0" y="236.0" text-anchor="middle" font-size="11.5" fill="#52514e">8 → 2048</text>
+<line x1="160" y1="176" x2="160" y2="194" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="480" y1="124" x2="480" y2="194" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="725" y1="124" x2="725" y2="194" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="40" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="55" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="70" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="85" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="100" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="115" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="130" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="145" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="160" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="175" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="190" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="205" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="220" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="235" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="250" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="265" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="280" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="295" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="310" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="325" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="340" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="355" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="370" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="385" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="400" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="415" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="430" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="445" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="460" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="475" y="272" width="12" height="22" rx="3" fill="#2a78d6"/>
+<rect x="490" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="505" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="520" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="535" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="550" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="565" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="580" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="595" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="610" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="625" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="640" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="655" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="670" y="272" width="12" height="22" rx="3" fill="#eb6834"/>
+<rect x="685" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="700" y="272" width="12" height="22" rx="3" fill="#8a8984"/>
+<rect x="715" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<rect x="730" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<rect x="745" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<rect x="760" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<rect x="775" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<rect x="790" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<rect x="805" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<rect x="820" y="272" width="12" height="22" rx="3" fill="#1baf7a"/>
+<line x1="110" y1="248" x2="143.5" y2="270" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="210" y1="248" x2="383.5" y2="270" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="480" y1="248" x2="578.5" y2="270" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="725" y1="248" x2="676.0" y2="270" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<path d="M885,124 V254 H773.5 V268" stroke="#8a8984" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+<text x="143.5" y="312" text-anchor="middle" font-size="11" font-weight="400" fill="#2a78d6">scene tokens</text>
+<text x="383.5" y="312" text-anchor="middle" font-size="11" font-weight="400" fill="#2a78d6">wrist tokens</text>
+<text x="578.5" y="312" text-anchor="middle" font-size="11" font-weight="400" fill="#8a8984">task text</text>
+<text x="676.0" y="326" text-anchor="middle" font-size="11" font-weight="400" fill="#eb6834">state</text>
+<text x="839" y="287" text-anchor="start" font-size="11" font-weight="400" fill="#1baf7a">action</text>
+<text x="839" y="300" text-anchor="start" font-size="11" font-weight="400" fill="#1baf7a">queries</text>
+<rect x="40" y="336" width="910" height="60" rx="10" fill="#f1effc" stroke="#6250d6" stroke-width="1.5"/>
+<text x="495.0" y="364.0" text-anchor="middle" font-size="14" font-weight="600" fill="#0b0b0b">Qwen3-VL-2B language model  (28 layers, frozen + LoRA r=32 on all linear layers)</text>
+<text x="495.0" y="381.0" text-anchor="middle" font-size="11.5" fill="#52514e">one forward pass · each action query attends to both images, the instruction and the state</text>
+<line x1="721.0" y1="296" x2="721.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="736.0" y1="296" x2="736.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="751.0" y1="296" x2="751.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="766.0" y1="296" x2="766.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="781.0" y1="296" x2="781.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="796.0" y1="296" x2="796.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="811.0" y1="296" x2="811.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="826.0" y1="296" x2="826.0" y2="334" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="721.0" y1="398" x2="721.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="736.0" y1="398" x2="736.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="751.0" y1="398" x2="751.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="766.0" y1="398" x2="766.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="781.0" y1="398" x2="781.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="796.0" y1="398" x2="796.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="811.0" y1="398" x2="811.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="826.0" y1="398" x2="826.0" y2="428" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="648.5" y="430" width="250.0" height="50" rx="10" fill="#e8f7f1" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="773.5" y="453.0" text-anchor="middle" font-size="13" font-weight="600" fill="#0b0b0b">action head (shared)</text>
+<text x="773.5" y="470.0" text-anchor="middle" font-size="11.5" fill="#52514e">LayerNorm → MLP 2048→1024→7</text>
+<line x1="773.5" y1="482" x2="773.5" y2="506" stroke="#8a8984" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="686.5" y="508" width="20" height="8" fill="#76a6de"/>
+<rect x="686.5" y="517" width="20" height="8" fill="#e1e6ea"/>
+<rect x="686.5" y="526" width="20" height="8" fill="#93b7e1"/>
+<rect x="686.5" y="535" width="20" height="8" fill="#bfd2e6"/>
+<rect x="686.5" y="544" width="20" height="8" fill="#a6c3e3"/>
+<rect x="686.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="686.5" y="562" width="20" height="8" fill="#2a78d6"/>
+<rect x="708.5" y="508" width="20" height="8" fill="#7aa8de"/>
+<rect x="708.5" y="517" width="20" height="8" fill="#dfe5ea"/>
+<rect x="708.5" y="526" width="20" height="8" fill="#9dbde2"/>
+<rect x="708.5" y="535" width="20" height="8" fill="#bccfe6"/>
+<rect x="708.5" y="544" width="20" height="8" fill="#b9cee5"/>
+<rect x="708.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="708.5" y="562" width="20" height="8" fill="#2a78d6"/>
+<rect x="730.5" y="508" width="20" height="8" fill="#81acdf"/>
+<rect x="730.5" y="517" width="20" height="8" fill="#dfe4ea"/>
+<rect x="730.5" y="526" width="20" height="8" fill="#a9c4e4"/>
+<rect x="730.5" y="535" width="20" height="8" fill="#b8cde5"/>
+<rect x="730.5" y="544" width="20" height="8" fill="#ccd9e8"/>
+<rect x="730.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="730.5" y="562" width="20" height="8" fill="#2a78d6"/>
+<rect x="752.5" y="508" width="20" height="8" fill="#8db3e1"/>
+<rect x="752.5" y="517" width="20" height="8" fill="#e1e6ea"/>
+<rect x="752.5" y="526" width="20" height="8" fill="#b5cbe5"/>
+<rect x="752.5" y="535" width="20" height="8" fill="#b3cae5"/>
+<rect x="752.5" y="544" width="20" height="8" fill="#dfe5ea"/>
+<rect x="752.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="752.5" y="562" width="20" height="8" fill="#2a78d6"/>
+<rect x="774.5" y="508" width="20" height="8" fill="#a5c2e3"/>
+<rect x="774.5" y="517" width="20" height="8" fill="#e4e8ea"/>
+<rect x="774.5" y="526" width="20" height="8" fill="#ccd9e8"/>
+<rect x="774.5" y="535" width="20" height="8" fill="#a5c2e3"/>
+<rect x="774.5" y="544" width="20" height="8" fill="#dfe5ea"/>
+<rect x="774.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="774.5" y="562" width="20" height="8" fill="#eb6834"/>
+<rect x="796.5" y="508" width="20" height="8" fill="#b5cbe5"/>
+<rect x="796.5" y="517" width="20" height="8" fill="#e8eaeb"/>
+<rect x="796.5" y="526" width="20" height="8" fill="#d9e1e9"/>
+<rect x="796.5" y="535" width="20" height="8" fill="#9fbee3"/>
+<rect x="796.5" y="544" width="20" height="8" fill="#efe9e4"/>
+<rect x="796.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="796.5" y="562" width="20" height="8" fill="#eb6834"/>
+<rect x="818.5" y="508" width="20" height="8" fill="#c1d3e6"/>
+<rect x="818.5" y="517" width="20" height="8" fill="#e8eaeb"/>
+<rect x="818.5" y="526" width="20" height="8" fill="#e6e9ea"/>
+<rect x="818.5" y="535" width="20" height="8" fill="#96b9e2"/>
+<rect x="818.5" y="544" width="20" height="8" fill="#efd6ca"/>
+<rect x="818.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="818.5" y="562" width="20" height="8" fill="#eb6834"/>
+<rect x="840.5" y="508" width="20" height="8" fill="#d0dce8"/>
+<rect x="840.5" y="517" width="20" height="8" fill="#e8eaeb"/>
+<rect x="840.5" y="526" width="20" height="8" fill="#f0efec"/>
+<rect x="840.5" y="535" width="20" height="8" fill="#8db4e1"/>
+<rect x="840.5" y="544" width="20" height="8" fill="#eecbbb"/>
+<rect x="840.5" y="553" width="20" height="8" fill="#c8d7e7"/>
+<rect x="840.5" y="562" width="20" height="8" fill="#eb6834"/>
+<text x="677.5" y="524" text-anchor="end" font-size="10.5" font-weight="400" fill="#52514e">Δxyz</text>
+<text x="677.5" y="551" text-anchor="end" font-size="10.5" font-weight="400" fill="#52514e">Δrpy</text>
+<text x="677.5" y="569" text-anchor="end" font-size="10.5" font-weight="400" fill="#52514e">grip</text>
+<text x="869.5" y="530" text-anchor="start" font-size="10.5" font-weight="400" fill="#52514e">t+1 … t+8</text>
+<text x="773.5" y="594" text-anchor="middle" font-size="12" font-weight="600" fill="#0b0b0b">8 × 7 action chunk (normalized to [-1, 1])  →  L1 loss vs. demonstration</text>
+<text x="773.5" y="612" text-anchor="middle" font-size="11" font-weight="400" fill="#52514e">at test time: execute the chunk, observe, predict again</text>
+<text x="40" y="448" text-anchor="start" font-size="12.5" font-weight="700" fill="#0b0b0b">Trainable (41M params):</text>
+<text x="52" y="470" text-anchor="start" font-size="12" font-weight="400" fill="#52514e">• LoRA adapters in the LLM</text>
+<text x="52" y="488" text-anchor="start" font-size="12" font-weight="400" fill="#52514e">• action-query embeddings</text>
+<text x="52" y="506" text-anchor="start" font-size="12" font-weight="400" fill="#52514e">• state MLP</text>
+<text x="52" y="524" text-anchor="start" font-size="12" font-weight="400" fill="#52514e">• action head</text>
+<text x="40" y="566" text-anchor="start" font-size="12" font-weight="400" fill="#52514e">Everything else (≈2B params) is frozen.</text>
+</svg>
