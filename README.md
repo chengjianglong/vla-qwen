@@ -43,6 +43,9 @@ where the gripper is closed:
   <img src="media/train_loss.png" width="700" alt="Training L1 loss curve">
 </p>
 
+**First run (2,000 steps ≈ 0.12 epochs, ~3.7 h):** the 250-step average L1 loss fell from 0.300 to 0.154.
+Checkpoints were saved every 500 steps.
+
 Trained on 2× RTX A2000 (6 GB each) with DDP: batch 1 per GPU × 8 accumulation steps = 16 samples per step, AdamW,
 lr 2e-4 with cosine decay, light image augmentation (random crop + brightness/contrast jitter). Peak memory is
 ~4.3 GB per GPU. Gradient checkpointing is on, vocab logits are never computed, and the frozen 620 MB token-embedding
