@@ -61,6 +61,7 @@ table is kept in CPU RAM.
 | `prepare_data.py` | Downloads LIBERO and converts it to fast memmapped arrays (`data/libero`) |
 | `train.py` | Single- or multi-GPU (DDP) training |
 | `viz_samples.py` | Renders `samples.png` |
+| `eval_libero.py` / `run_eval.sh` | Closed-loop evaluation in the LIBERO simulator (success rate + rollout videos) |
 | `make_media.py` | Renders the README figures in `media/` (architecture, GIFs, loss curve) |
 
 ## Usage
@@ -70,6 +71,19 @@ python prepare_data.py --res 224 --workers 12         # ~33 GB download → ~80 
 python viz_samples.py --n 4 --out samples.png
 torchrun --nproc_per_node 2 train.py --bs 1 --accum 8 --steps 2000 --warmup 100 --save_every 500
 python make_media.py --log runs_2k.log                # regenerate README figures
+```
+
+### Simulator evaluation
+
+LIBERO needs older simulator packages (robosuite 1.4.1, MuJoCo 3.x), so it lives in a separate copy of the env:
+
+```bash
+conda create -p ./.env-libero --clone ./.env
+git clone --depth 1 https://github.com/Lifelong-Robot-Learning/LIBERO.git third_party/LIBERO
+.env-libero/bin/pip install "robosuite==1.4.1" "mujoco==3.3.0" "bddl==1.0.1" easydict "gym==0.25.2" future \
+    opencv-python-headless imageio imageio-ffmpeg
+mkdir -p third_party/libero_cfg   # config.yaml pointing at third_party/LIBERO/libero/libero/{bddl_files,init_files,assets}
+GPU=0 ./run_eval.sh --ckpt runs/qwen3vl2b_libero_2k/ckpt_002000.pt --trials 10   # official protocol: --trials 50
 ```
 
 Tested with torch 2.11.0+cu128, transformers 5.23 and peft 0.21.

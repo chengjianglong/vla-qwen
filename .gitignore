@@ -4,3 +4,5 @@ runs/
 __pycache__/
 *.log
 *.pt
+.env-libero/
+third_party/
