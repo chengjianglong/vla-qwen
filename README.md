@@ -6,6 +6,11 @@ natural-language instruction, it predicts the next **8 robot actions in a single
 (OpenVLA-OFT-style parallel decoding with an L1 regression head — no action tokenization, no autoregressive sampling).
 
 <p align="center">
+  <img src="media/rollouts.gif" width="576" alt="Closed-loop rollouts of the trained policy in the LIBERO simulator">
+  <br><em>The trained policy acting in the LIBERO simulator: 45% average success after just 2,000 training steps (<a href="#results">details</a>)</em>
+</p>
+
+<p align="center">
   <img src="media/model_io.gif" width="672" alt="Model input (scene and wrist cameras) next to the 7-D action trajectory, with the 8-step chunk being predicted highlighted">
 </p>
 
@@ -51,7 +56,26 @@ lr 2e-4 with cosine decay, light image augmentation (random crop + brightness/co
 ~4.3 GB per GPU. Gradient checkpointing is on, vocab logits are never computed, and the frozen 620 MB token-embedding
 table is kept in CPU RAM.
 
-**Rollout videos in the LIBERO simulator:** coming once the evaluation script is in place.
+## Results
+
+Closed-loop success rate in the LIBERO simulator for the 2,000-step checkpoint (`eval_libero.py`, 10 episodes per task,
+40 tasks, 400 episodes in total):
+
+| Suite | Success | Notes |
+|---|---|---|
+| LIBERO-Spatial | **55%** | 10/10 on "bowl from table center". 1/10 on the two cookie-box layouts |
+| LIBERO-Object | **71%** | every object ≥ 5/10. Ketchup, butter and salad dressing 10/10 |
+| LIBERO-Goal | **45%** | "put the bowl on the plate" 10/10 and "turn on the stove" 9/10. Drawer opening and plate pushing 0/10 |
+| LIBERO-Long | **10%** | two-stage tasks. Only "two items → basket" and "book → caddy" succeed |
+| **Average** | **45.2%** | |
+
+<p align="center">
+  <img src="media/rollouts.gif" width="576" alt="Six closed-loop rollouts of the trained policy in LIBERO: five successes and one failure (opening a drawer)">
+</p>
+
+This is an early checkpoint: 2,000 steps × 16 samples covers only ~12% of one epoch. Published OpenVLA-OFT numbers
+come from 50k–150k steps, and the training loss here was still falling when the run stopped. Motions that are rare in
+the data (drawers, pushing) and two-stage tasks are the clear gaps. A longer run is the obvious next step.
 
 ## Files
 

@@ -4,6 +4,7 @@
   model_io.gif       one demo: scene + wrist camera, with the 7-D action trace and the 8-step chunk window
   demos.gif          2x2 grid of demonstrations from four different LIBERO task suites
   train_loss.png     training loss curve parsed from a train.py log
+  rollouts.gif       closed-loop LIBERO rollouts of the trained policy (from eval_libero.py videos)
 
 Usage:  python make_media.py [--log runs_2k.log]
 """
@@ -235,6 +236,38 @@ def demos_gif(d, path, tasks=(3, 10, 24, 36), stride=3, tile=224):
 
 
 # ----------------------------------------------------------------------------------------------
+ROLLOUTS = [("libero_spatial_t04_ep1_success", "spatial: bowl in drawer → plate"),
+            ("libero_object_t02_ep0_success", "object: dressing → basket"),
+            ("libero_goal_t07_ep0_success", "goal: turn on the stove"),
+            ("libero_goal_t01_ep0_success", "goal: bowl → stove"),
+            ("libero_10_t01_ep0_success", "long: cheese + butter → basket"),
+            ("libero_goal_t00_ep0_fail", "goal: open the drawer")]
+
+
+def rollouts_gif(video_dir, path, tile=192, stride=2):
+    import imageio.v3 as iio
+    vids = [(iio.imread(os.path.join(video_dir, n + ".mp4"))[:, :, :256], cap, n.endswith("success"))
+            for n, cap in ROLLOUTS]
+    T = max(len(v) for v, _, _ in vids)
+    cap_h, cols = 22, 3
+    rows = (len(vids) + cols - 1) // cols
+    f_cap, f_tag = font(9), font(12, True)
+    frames = []
+    for t in list(range(0, T, stride)) + [T - 1] * 15:  # hold the final frame
+        fr = Image.new("RGB", (cols * tile, rows * (tile + cap_h)), SURF)
+        dr = ImageDraw.Draw(fr)
+        for i, (v, cap, ok) in enumerate(vids):
+            x, y = (i % cols) * tile, (i // cols) * (tile + cap_h)
+            fr.paste(Image.fromarray(v[min(t, len(v) - 1)]).resize((tile, tile), Image.BILINEAR), (x, y + cap_h))
+            dr.text((x + 5, y + 5), cap, fill=INK, font=f_cap)
+            if t >= len(v) - 1:
+                tag, col = ("success", GREEN) if ok else ("failed", "#d03b3b")
+                dr.rectangle([x + tile - 70, y + cap_h + 6, x + tile - 6, y + cap_h + 24], fill=col)
+                dr.text((x + tile - 64, y + cap_h + 8), tag, fill="white", font=f_tag)
+        frames.append(fr.quantize(128, method=Image.Quantize.MEDIANCUT))
+    frames[0].save(path, save_all=True, append_images=frames[1:], duration=90, loop=0, optimize=True)
+
+
 def loss_png(log, path):
     pts = [(int(m[1]), float(m[2])) for m in re.finditer(r"^step (\d+) loss ([\d.]+)", open(log).read(), re.M)]
     if not pts:
@@ -266,6 +299,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default="data/libero")
     ap.add_argument("--log", default="runs_2k.log")
+    ap.add_argument("--videos", default="runs/qwen3vl2b_libero_2k/eval_ckpt_002000/videos")
     ap.add_argument("--only", default="")
     a = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)
@@ -273,7 +307,8 @@ def main():
     jobs = {"arch": lambda: architecture_svg(d, f"{OUT}/architecture.svg"),
             "io": lambda: model_io_gif(d, f"{OUT}/model_io.gif"),
             "demos": lambda: demos_gif(d, f"{OUT}/demos.gif"),
-            "loss": lambda: loss_png(a.log, f"{OUT}/train_loss.png")}
+            "loss": lambda: loss_png(a.log, f"{OUT}/train_loss.png"),
+            "rollouts": lambda: rollouts_gif(a.videos, f"{OUT}/rollouts.gif")}
     for k, fn in jobs.items():
         if not a.only or k in a.only.split(","):
             fn(); print("done", k)
