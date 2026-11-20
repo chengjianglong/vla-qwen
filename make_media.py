@@ -6,7 +6,7 @@
   train_loss.png     training loss curve parsed from a train.py log
   rollouts.gif       closed-loop LIBERO rollouts of the trained policy (from eval_libero.py videos)
 
-Usage:  python make_media.py [--log runs_2k.log]
+Usage:  python make_media.py [--log runs_2k.log,runs_20k.log]
 """
 import argparse, base64, io, json, os, re, textwrap
 
@@ -236,12 +236,12 @@ def demos_gif(d, path, tasks=(3, 10, 24, 36), stride=3, tile=224):
 
 
 # ----------------------------------------------------------------------------------------------
-ROLLOUTS = [("libero_spatial_t04_ep1_success", "spatial: bowl in drawer → plate"),
-            ("libero_object_t02_ep0_success", "object: dressing → basket"),
-            ("libero_goal_t07_ep0_success", "goal: turn on the stove"),
-            ("libero_goal_t01_ep0_success", "goal: bowl → stove"),
-            ("libero_10_t01_ep0_success", "long: cheese + butter → basket"),
-            ("libero_goal_t00_ep0_fail", "goal: open the drawer")]
+ROLLOUTS = [("libero_goal_t00_ep0_success", "goal: open the middle drawer"),
+            ("libero_goal_t05_ep0_success", "goal: push plate to the stove"),
+            ("libero_spatial_t03_ep0_success", "spatial: bowl on cookie box → plate"),
+            ("libero_10_t09_ep0_success", "long: mug → microwave, close it"),
+            ("libero_10_t08_ep0_success", "long: both moka pots → stove"),
+            ("libero_10_t03_ep0_fail", "long: bowl → bottom drawer, close it")]
 
 
 def rollouts_gif(video_dir, path, tile=192, stride=2):
@@ -269,11 +269,15 @@ def rollouts_gif(video_dir, path, tile=192, stride=2):
 
 
 def loss_png(log, path):
-    pts = [(int(m[1]), float(m[2])) for m in re.finditer(r"^step (\d+) loss ([\d.]+)", open(log).read(), re.M)]
+    pts = {}
+    for f in log.split(","):  # comma-separated logs; a resumed run continues the step count
+        for m in re.finditer(r"^step (\d+) loss ([\d.]+)", open(f).read(), re.M):
+            pts[int(m[1])] = float(m[2])
+    pts = sorted(pts.items())
     if not pts:
         print("no loss lines in", log); return
     st, lo = np.array(pts).T
-    k = 9
+    k = 9 if len(pts) < 500 else 51
     smooth = np.convolve(np.pad(lo, (k // 2, k // 2), mode="edge"), np.ones(k) / k, mode="valid")
     fig, ax = plt.subplots(figsize=(7, 3.2), dpi=120, facecolor=SURF)
     ax.set_facecolor(SURF)
@@ -290,6 +294,10 @@ def loss_png(log, path):
         ax.spines[sp].set_color(GRID)
     ax.tick_params(colors=INK2, labelsize=8)
     ax.set_ylim(0, None)
+    if len(log.split(",")) > 1:  # mark where the first run ended and the long run resumed
+        b = max(int(m[1]) for m in re.finditer(r"^step (\d+) ", open(log.split(",")[0]).read(), re.M))
+        ax.axvline(b, color=INK2, lw=0.8, ls=":")
+        ax.text(b, ax.get_ylim()[1] * 0.95, f"  resumed at {b:,}", fontsize=8, color=INK2, va="top")
     fig.tight_layout()
     fig.savefig(path, facecolor=SURF)
     plt.close(fig)
@@ -298,8 +306,8 @@ def loss_png(log, path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default="data/libero")
-    ap.add_argument("--log", default="runs_2k.log")
-    ap.add_argument("--videos", default="runs/qwen3vl2b_libero_2k/eval_ckpt_002000/videos")
+    ap.add_argument("--log", default="runs_2k.log,runs_20k.log", help="comma-separated training logs")
+    ap.add_argument("--videos", default="runs/qwen3vl2b_libero_20k/eval_ckpt_020000/videos")
     ap.add_argument("--only", default="")
     a = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)

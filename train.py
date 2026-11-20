@@ -113,7 +113,7 @@ def main():
                                                        init_sync=False) if ddp else model
 
     ds = LiberoDataset(a.data, a.chunk)
-    sampler = DistributedSampler(ds, world, rank, shuffle=True, seed=0) if ddp else None
+    sampler = DistributedSampler(ds, world, rank, shuffle=True, seed=step0) if ddp else None  # new order on resume
     dl = DataLoader(ds, batch_size=a.bs, sampler=sampler, shuffle=sampler is None, num_workers=a.workers,
                     collate_fn=lambda b: b, drop_last=True, persistent_workers=True, prefetch_factor=4)
 

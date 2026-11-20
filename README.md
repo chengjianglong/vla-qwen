@@ -7,7 +7,7 @@ natural-language instruction, it predicts the next **8 robot actions in a single
 
 <p align="center">
   <img src="media/rollouts.gif" width="576" alt="Closed-loop rollouts of the trained policy in the LIBERO simulator">
-  <br><em>The trained policy acting in the LIBERO simulator: 45% average success after just 2,000 training steps (<a href="#results">details</a>)</em>
+  <br><em>The trained policy acting in the LIBERO simulator: 96% average success across the four LIBERO suites (<a href="#results">details</a>)</em>
 </p>
 
 <p align="center">
@@ -48,8 +48,12 @@ where the gripper is closed:
   <img src="media/train_loss.png" width="700" alt="Training L1 loss curve">
 </p>
 
-**First run (2,000 steps ≈ 0.12 epochs, ~3.7 h):** the 250-step average L1 loss fell from 0.300 to 0.154.
-Checkpoints were saved every 500 steps.
+Two runs, back to back:
+
+- **First run (2,000 steps ≈ 0.12 epochs, ~3.7 h):** the 250-step average L1 loss fell from 0.300 to 0.154.
+- **Long run (resumed from step 2,000 up to 20,000; ≈ 1.2 epochs in total, ~29 h):** the 1,000-step average fell to
+  0.117. The small bump just after step 2,000 comes from the restart: the optimizer state is fresh and the learning
+  rate warms up again. Checkpoints are saved every 1,000 steps.
 
 Trained on 2× RTX A2000 (6 GB each) with DDP: batch 1 per GPU × 8 accumulation steps = 16 samples per step, AdamW,
 lr 2e-4 with cosine decay, light image augmentation (random crop + brightness/contrast jitter). Peak memory is
@@ -58,24 +62,28 @@ table is kept in CPU RAM.
 
 ## Results
 
-Closed-loop success rate in the LIBERO simulator for the 2,000-step checkpoint (`eval_libero.py`, 10 episodes per task,
-40 tasks, 400 episodes in total):
+Closed-loop success rate in the LIBERO simulator (`eval_libero.py`, 10 episodes per task, 40 tasks, 400 episodes per
+checkpoint):
 
-| Suite | Success | Notes |
-|---|---|---|
-| LIBERO-Spatial | **55%** | 10/10 on "bowl from table center". 1/10 on the two cookie-box layouts |
-| LIBERO-Object | **71%** | every object ≥ 5/10. Ketchup, butter and salad dressing 10/10 |
-| LIBERO-Goal | **45%** | "put the bowl on the plate" 10/10 and "turn on the stove" 9/10. Drawer opening and plate pushing 0/10 |
-| LIBERO-Long | **10%** | two-stage tasks. Only "two items → basket" and "book → caddy" succeed |
-| **Average** | **45.2%** | |
+| Suite | 2,000 steps | **20,000 steps** | Notes on the 20,000-step checkpoint |
+|---|---|---|---|
+| LIBERO-Spatial | 55% | **98%** | 8 tasks at 10/10. The cookie-box layouts (1/10 before) are now 10/10 |
+| LIBERO-Object | 71% | **100%** | every object 10/10 |
+| LIBERO-Goal | 45% | **99%** | drawer opening and plate pushing went from 0/10 to 10/10. One miss on "wine bottle on top of the cabinet" |
+| LIBERO-Long | 10% | **87%** | weakest: "bowl in bottom drawer and close it" 6/10, "two mugs on two plates" 7/10 |
+| **Average** | 45.2% | **96.0%** | |
 
 <p align="center">
-  <img src="media/rollouts.gif" width="576" alt="Six closed-loop rollouts of the trained policy in LIBERO: five successes and one failure (opening a drawer)">
+  <img src="media/rollouts.gif" width="576" alt="Six closed-loop rollouts of the 20,000-step policy in LIBERO: opening a drawer, pushing a plate, the cookie-box layout, mug into microwave and two moka pots succeed; putting a bowl in the bottom drawer and closing it fails">
 </p>
 
-This is an early checkpoint: 2,000 steps × 16 samples covers only ~12% of one epoch. Published OpenVLA-OFT numbers
-come from 50k–150k steps, and the training loss here was still falling when the run stopped. Motions that are rare in
-the data (drawers, pushing) and two-stage tasks are the clear gaps. A longer run is the obvious next step.
+The clip shows tasks the 2,000-step checkpoint could not do at all, plus a typical remaining failure. Training ten times
+longer (still only ~1.2 epochs) closed almost every gap: the motions that are rare in the data (drawers, pushing) now
+work, and the long two-stage tasks went from 10% to 87%. The remaining failures are mostly on long tasks that end by
+closing a drawer or place two objects precisely.
+
+These numbers use 10 episodes per task. The official LIBERO protocol uses 50, so treat differences of a few points as
+noise. For reference, published OpenVLA-OFT (7B) reports 97.1% average with 50 episodes per task.
 
 ## Files
 
@@ -94,7 +102,9 @@ the data (drawers, pushing) and two-stage tasks are the clear gaps. A longer run
 python prepare_data.py --res 224 --workers 12         # ~33 GB download → ~80 GB memmap
 python viz_samples.py --n 4 --out samples.png
 torchrun --nproc_per_node 2 train.py --bs 1 --accum 8 --steps 2000 --warmup 100 --save_every 500
-python make_media.py --log runs_2k.log                # regenerate README figures
+torchrun --nproc_per_node 2 train.py --bs 1 --accum 8 --steps 20000 --warmup 100 --save_every 1000 \
+    --resume runs/qwen3vl2b_libero_2k/ckpt_002000.pt --out runs/qwen3vl2b_libero_20k
+python make_media.py --log runs_2k.log,runs_20k.log   # regenerate README figures
 ```
 
 ### Simulator evaluation
@@ -107,7 +117,8 @@ git clone --depth 1 https://github.com/Lifelong-Robot-Learning/LIBERO.git third_
 .env-libero/bin/pip install "robosuite==1.4.1" "mujoco==3.3.0" "bddl==1.0.1" easydict "gym==0.25.2" future \
     opencv-python-headless imageio imageio-ffmpeg
 mkdir -p third_party/libero_cfg   # config.yaml pointing at third_party/LIBERO/libero/libero/{bddl_files,init_files,assets}
-GPU=0 ./run_eval.sh --ckpt runs/qwen3vl2b_libero_2k/ckpt_002000.pt --trials 10   # official protocol: --trials 50
+GPU=0 ./run_eval.sh --ckpt runs/qwen3vl2b_libero_20k/ckpt_020000.pt --trials 10   # official protocol: --trials 50
+# split across GPUs: GPU=0 ... --suites libero_spatial,libero_10 --out <dir_a> & GPU=1 ... --suites libero_object,libero_goal --out <dir_b>
 ```
 
 Tested with torch 2.11.0+cu128, transformers 5.23 and peft 0.21.
